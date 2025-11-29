@@ -1,23 +1,26 @@
 from datetime import datetime
-from sensor import Sensor
 
-class Leitura(Sensor):
-    def __init__(self, valor, sensor, timestamp=None):
-        super().__init__(sensor.id, sensor.tipo, sensor.unidade, sensor.localizacao)
+class Leitura:
+    def __init__(self, valor, dados_sensor):
         self.valor = valor
-        if timestamp is None:
-            self.timestamp = datetime.now()
-        else:
-            self.timestamp = timestamp
+        self.dados_sensor = dados_sensor
+        self.timestamp = datetime.now()
 
     def to_dict(self):
-        dados = { 'valor': self.valor,
-                  'sensor_id': self.id,
-                  'sensor_tipo': self.tipo,
-                  'timestamp': self.timestamp }
-        return dados
 
-    def __str__(self):
-        horario = self.timestamp.strftime("%H:%M:%S")
+        dicionario = {
 
-        return f"[{horario}] ID: {self.id} | Tipo: {self.tipo} | Local: {self.localizacao} | Dados: {self.valor:.2f} {self.unidade}"
+            'valor': self.valor,
+            'sensor_id': self.dados_sensor.id,
+            'sensor_tipo': self.dados_sensor.tipo,
+            'timestamp': self.timestamp
+
+        }
+
+        return dicionario
+
+    def exibir_leitura(self):
+
+        horario = f"{self.timestamp:%H:%M:%S}"
+
+        return f"ID do sensor: {self.dados_sensor.id} | tipo de sensor: {self.dados_sensor.tipo} | localizacao do sensor: {self.dados_sensor.localizacao} | dados da leitura: {self.valor:.2f} {self.dados_sensor.unidade} [{horario}]"
