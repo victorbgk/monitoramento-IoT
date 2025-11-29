@@ -1,0 +1,82 @@
+# projeto POO para victor gabriel e arthur:
+
+# desenvolvam, em Python (no terminal),
+
+# um pequeno sistema que simula o funcionamento
+# de sensores IoT que monitoram o ambiente
+# de uma plantação de coqueiros.
+
+# O sistema deve permitir cadastrar um sensor:
+# (tipos de sensores: temperatura, umidade,
+# salinidade, radiação solar, etc)
+
+# permitindo ao usuário cadastrar leituras,
+# e o programa registra e exibe essas leituras
+# de forma organizada.
+
+# O projeto representa uma versão local e didática
+# do sistema IoT real, sem uso de rede ou banco
+# de dados, mas com a mesma lógica conceitual:
+# sensores → leituras → análise.
+
+# Estrutura conceitual (POO)
+
+# O sistema deve conter pelo menos três classes:
+
+# 1. Sensor
+# Representa um sensor físico instalado na plantação.
+
+# Atributos:
+# id (int)
+# tipo (str) — ex: "temperatura do solo","umidade do ar"
+# unidade (str) — ex: "°C", "%"
+# localizacao (str)
+
+# Métodos:
+# gerar_leitura() → retorna um valor aleatório dentro de uma faixa esperada (limite);
+# __str__() → exibe informações do sensor
+
+# 2. Leitura
+# Representa dados coletados por um sensor em um determinado instante.
+
+# Atributos:
+# valor (float)
+# sensor (objeto da classe Sensor)
+# timestamp (datetime)
+
+# Métodos:
+# to_dict() → retorna os dados da leitura em dicionário
+# __str__() → exibe a leitura formatada
+
+# 3. Usuário
+
+# Atributos:
+# nome (String)
+# login (String)
+# senha (String)
+
+# Métodos:
+# método de encapsulamento dos atributos acima
+
+# PROGRAMA PRINCIPAL
+
+# O programa principal é o arquivo
+# estacaoMonitoramento.py (não é classe).
+
+# Uma estação que gerencia vários sensores
+# e armazena suas leituras.
+
+# Crie duas listas:
+
+# sensores (lista de objetos Sensor),
+# leituras (lista de objetos Leitura)
+
+# O programa deve permitir o cadastro de usuários
+# e depois fazer o login deste usuário.
+
+# Após o login, o usuário pode:
+
+# adicionar_sensor(sensor)
+# coletar_dados() → percorre os sensores e cadastra novas leituras
+# mostrar_leituras() → imprime todas as leituras coletadas
+# filtrar_por_tipo(tipo_sensor) → mostra apenas leituras de um tipo
